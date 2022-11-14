@@ -562,6 +562,13 @@ if __name__ == "__main__":
                     "id": nowname,
                 }
             },
+            "testtube": {
+                "target": "pytorch_lightning.loggers.CSVLogger",  # https://github.com/Lightning-AI/lightning/issues/13958
+                "params": {
+                    "name": "testtube",
+                    "save_dir": logdir,
+                }
+            },
         }
         default_logger_cfg = default_logger_cfgs["testtube"]
         if "logger" in lightning_config:
