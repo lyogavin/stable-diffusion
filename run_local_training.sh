@@ -25,7 +25,7 @@ config_yaml="$ROOT_DIR/base_config.yaml"
 
 
 # dataset gen'd by ghostai_training/ocr_title_to_image/gen_data.ipynb
-cat <<EOT > $config_json
+cat <<EOT > $config_yaml
 data:
   target: main.DataModuleFromConfig
   params:
