@@ -77,7 +77,7 @@ python main.py \
     --scale_lr False \
     --num_nodes 1 \
     --check_val_every_n_epoch 10 \
-    --finetune_from $ckpt_path \
+    --actual_resume $ckpt_path \
     --every_n_train_steps 100 \
     data.params.batch_size=$BATCH_SIZE \
     lightning.trainer.accumulate_grad_batches=$ACCUMULATE_BATCHES \

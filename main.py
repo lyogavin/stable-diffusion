@@ -479,7 +479,7 @@ if __name__ == "__main__":
 
     print(f"args opt: {pformat(opt)}")
     print(f"args unknown: {pformat(unknown)}")
-    
+
     if opt.name and opt.resume:
         raise ValueError(
             "-n/--name and -r/--resume cannot be specified both."
