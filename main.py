@@ -19,7 +19,7 @@ from pytorch_lightning.utilities import rank_zero_info
 
 from ldm.data.base import Txt2ImgIterableBaseDataset
 from ldm.util import instantiate_from_config
-
+from pprint import pformat
 
 def get_parser(**parser_kwargs):
     def str2bool(v):
@@ -664,6 +664,8 @@ if __name__ == "__main__":
 
         trainer_kwargs["callbacks"] = [instantiate_from_config(callbacks_cfg[k]) for k in callbacks_cfg]
 
+        print(f"trainer init params: trainer_opt: {pformat(trainer_opt)}")
+        print(f"trainer init params: trainer_kwargs: {pformat(trainer_kwargs)}")
         trainer = Trainer.from_argparse_args(trainer_opt, **trainer_kwargs)
         trainer.logdir = logdir  ###
 
