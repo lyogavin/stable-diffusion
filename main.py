@@ -38,6 +38,7 @@ def get_parser(**parser_kwargs):
         type=int,
         const=True,
         default=8000,
+        nargs="?",
         help="model checkpoint every n strain steps",
     )
     parser.add_argument(
