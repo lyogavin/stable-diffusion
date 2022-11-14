@@ -29,8 +29,8 @@ cat <<EOT > $config_yaml
 data:
   target: main.DataModuleFromConfig
   params:
-    batch_size: 4
-    num_workers: 4
+    batch_size: 8
+    num_workers: 8
     num_val_workers: 0 # Avoid a weird val dataloader issue
     train:
       target: ldm.data.simple.hf_dataset
@@ -72,7 +72,7 @@ python main.py \
     -t \
     --base $config_yaml \
     -l $ROOT_DIR \
-    -name "TRAIN_NAME"\
+    -name "$TRAIN_NAME"\
     --gpus $gpu_list \
     --scale_lr False \
     --num_nodes 1 \
@@ -81,4 +81,4 @@ python main.py \
     --every_n_train_steps 100 \
     data.params.batch_size=$BATCH_SIZE \
     lightning.trainer.accumulate_grad_batches=$ACCUMULATE_BATCHES \
-    data.params.validation.params.n_gpus=$NUM_GPUS
+    data.params.validation.params.n_gpus=$N_GPUS
