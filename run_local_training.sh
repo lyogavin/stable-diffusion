@@ -46,14 +46,6 @@ model:
     scale_factor: 0.18215
     use_ema: False
 
-    personalization_config:
-      target: ldm.modules.embedding_manager.EmbeddingManager
-      params:
-        placeholder_strings: ["*"]
-        initializer_words: ["sculpture"]
-        per_image_tokens: false
-        num_vectors_per_token: 1
-        progressive_words: False
 
     unet_config:
       target: ldm.modules.diffusionmodules.openaimodel.UNetModel
