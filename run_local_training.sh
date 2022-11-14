@@ -72,7 +72,7 @@ python main.py \
     -t \
     --base $config_yaml \
     -l $ROOT_DIR \
-    -name "$TRAIN_NAME"\
+    --name "$TRAIN_NAME"\
     --gpus $gpu_list \
     --scale_lr False \
     --num_nodes 1 \
