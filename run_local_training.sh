@@ -64,6 +64,10 @@ TRAIN_NAME=finetune_redbook_ocr
 gpu_list=0,1,2,3
 
 ckpt_path=/home/ubuntu/cloudfs/saved_models/models--CompVis--stable-diffusion-v-1-4-original/snapshots/f0bb45b49990512c454cf2c5670b0952ef2f9c71/sd-v1-4-full-ema.ckpt
+
+# testing setup
+#    --every_n_train_steps 100 \
+
 python main.py \
     -t \
     --base $config_yaml \
@@ -74,6 +78,7 @@ python main.py \
     --num_nodes 1 \
     --check_val_every_n_epoch 10 \
     --finetune_from $ckpt_path \
+    --every_n_train_steps 100 \
     data.params.batch_size=$BATCH_SIZE \
     lightning.trainer.accumulate_grad_batches=$ACCUMULATE_BATCHES \
     data.params.validation.params.n_gpus=$NUM_GPUS
