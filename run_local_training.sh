@@ -94,7 +94,7 @@ data:
   params:
     batch_size: 8
     num_workers: 8
-    num_val_workers: 0 # Avoid a weird val dataloader issue
+    #num_val_workers: 0 # Avoid a weird val dataloader issue
     train:
       target: ldm.data.simple.hf_dataset
       params:
