@@ -518,6 +518,7 @@ if __name__ == "__main__":
     seed_everything(opt.seed)
 
     try:
+        trainer = None
         # init and save configs
         configs = [OmegaConf.load(cfg) for cfg in opt.base]
         cli = OmegaConf.from_dotlist(unknown)
@@ -540,6 +541,7 @@ if __name__ == "__main__":
         lightning_config.trainer = trainer_config
 
         # model
+        print(f"instantiate_from_config: {config}")
         model = instantiate_from_config(config.model)
 
         # trainer and callbacks
@@ -749,4 +751,5 @@ if __name__ == "__main__":
             os.makedirs(os.path.split(dst)[0], exist_ok=True)
             os.rename(logdir, dst)
         if trainer.global_rank == 0:
-            print(trainer.profiler.summary())
+            if trainer:
+                print(trainer.profiler.summary())
