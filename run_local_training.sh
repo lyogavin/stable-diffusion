@@ -58,10 +58,10 @@ data:
 EOT
 
 BATCH_SIZE=4
-N_GPUS=4
+N_GPUS=8
 ACCUMULATE_BATCHES=1
 TRAIN_NAME=finetune_redbook_ocr
-gpu_list=0,1,2,3
+gpu_list=0,1,2,3,4,5,6,7
 
 ckpt_path=/home/ubuntu/cloudfs/saved_models/models--CompVis--stable-diffusion-v-1-4-original/snapshots/f0bb45b49990512c454cf2c5670b0952ef2f9c71/sd-v1-4-full-ema.ckpt
 
