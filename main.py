@@ -476,6 +476,10 @@ if __name__ == "__main__":
     parser = Trainer.add_argparse_args(parser)
 
     opt, unknown = parser.parse_known_args()
+
+    print(f"args opt: {pformat(opt)}")
+    print(f"args unknown: {pformat(unknown)}")
+    
     if opt.name and opt.resume:
         raise ValueError(
             "-n/--name and -r/--resume cannot be specified both."
@@ -751,5 +755,5 @@ if __name__ == "__main__":
             os.makedirs(os.path.split(dst)[0], exist_ok=True)
             os.rename(logdir, dst)
         if trainer.global_rank == 0:
-            if trainer:
+            if trainer is not None:
                 print(trainer.profiler.summary())
