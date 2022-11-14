@@ -45,7 +45,6 @@ model:
     monitor: val/loss_simple_ema
     scale_factor: 0.18215
     use_ema: False
-    embedding_reg_weight: 0.0
 
     personalization_config:
       target: ldm.modules.embedding_manager.EmbeddingManager
