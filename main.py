@@ -34,6 +34,13 @@ def get_parser(**parser_kwargs):
 
     parser = argparse.ArgumentParser(**parser_kwargs)
     parser.add_argument(
+        "--every_n_train_steps",
+        type=int,
+        const=True,
+        default=8000,
+        help="model checkpoint every n strain steps",
+    )
+    parser.add_argument(
         "-n",
         "--name",
         type=str,
@@ -573,6 +580,7 @@ if __name__ == "__main__":
                 "filename": "{epoch:06}",
                 "verbose": True,
                 "save_last": True,
+                "every_n_train_steps": opt.every_n_train_steps, #https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.callbacks.ModelCheckpoint.html
             }
         }
         if hasattr(model, "monitor"):
