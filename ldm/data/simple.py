@@ -4,6 +4,8 @@ from torch.utils.data import Dataset
 from pathlib import Path
 import json
 from PIL import Image
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 from torchvision import transforms
 from einops import rearrange
 from ldm.util import instantiate_from_config
