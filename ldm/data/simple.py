@@ -75,13 +75,20 @@ def hf_dataset(
     assert image_column in ds.column_names, f"Didn't find column {image_column} in {ds.column_names}"
     assert text_column in ds.column_names, f"Didn't find column {text_column} in {ds.column_names}"
 
+    def try_except_tform(im):
+        try:
+            return tform(im)
+        except Exception as e:
+            return None
+
     def pre_process(examples):
+
         processed = {}
-        processed[image_key] = [tform(im) for im in examples[image_column]]
+        processed[image_key] = [try_except_tform(im) for im in examples[image_column]]
         processed[caption_key] = examples[text_column]
         return processed
 
-    ds=ds.map(pre_process, remove_columns=[text_column], batched=True)
+    ds=ds.map(pre_process, remove_columns=[text_column], batched=True,num_proc=64)
 
     #ds.set_transform(pre_process)
     return ds
