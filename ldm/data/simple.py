@@ -81,7 +81,7 @@ def hf_dataset(
         processed[caption_key] = examples[text_column]
         return processed
 
-    ds=ds.map(lambda pre_process, remove_columns=[text_column], batched=True)
+    ds=ds.map(pre_process, remove_columns=[text_column], batched=True)
 
     #ds.set_transform(pre_process)
     return ds
