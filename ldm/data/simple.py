@@ -80,7 +80,8 @@ def hf_dataset(
         processed[image_key] = [tform(im) for im in examples[image_column]]
         processed[caption_key] = examples[text_column]
         return processed
-    ds=ds.map(pre_process, remove_columns=[text_column])
+
+    ds=ds.map(lambda pre_process, remove_columns=[text_column], batched=True)
 
     #ds.set_transform(pre_process)
     return ds
