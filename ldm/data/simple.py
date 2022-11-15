@@ -7,7 +7,7 @@ from PIL import Image
 from torchvision import transforms
 from einops import rearrange
 from ldm.util import instantiate_from_config
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 
 class FolderData(Dataset):
     def __init__(self, root_dir, caption_file=None, image_transforms=[], ext="jpg") -> None:
